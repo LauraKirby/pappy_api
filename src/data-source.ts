@@ -1,9 +1,9 @@
-import * as dotenv from "dotenv";
-import "reflect-metadata";
-import { DataSource } from "typeorm";
-import { User } from "./entity/user";
+import * as dotenv from "dotenv"
+import "reflect-metadata"
+import { DataSource } from "typeorm"
+import { User } from "./entity/user"
 
-dotenv.config();
+dotenv.config()
 
 export const AppDataSource = new DataSource({
   type: "postgres",
@@ -17,4 +17,4 @@ export const AppDataSource = new DataSource({
   entities: [User],
   migrations: [],
   subscribers: [],
-});
+})
