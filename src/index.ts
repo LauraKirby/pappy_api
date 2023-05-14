@@ -1,6 +1,8 @@
+import Koa from "koa";
 import { AppDataSource } from "./data-source";
 import { User } from "./entity/user";
-const Koa = require("koa");
+import { subdomains } from "./routes/protected";
+// const Koa = require("koa");
 const app = new Koa();
 
 AppDataSource.initialize()
@@ -24,6 +26,8 @@ AppDataSource.initialize()
       const rt = ctx.response.get("X-Response-Time");
       console.log(`${ctx.method} ${ctx.url} - ${rt}`);
     });
+
+    app.use(subdomains.routes());
 
     // an example of how to add middleware the request/response cycle
     // x-response-time
