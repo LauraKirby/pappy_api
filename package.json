@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "dotenv": "^16.0.3",
+    "koa": "^2.14.2",
     "pg": "^8.4.0",
     "reflect-metadata": "^0.1.13",
     "typeorm": "0.3.16"
