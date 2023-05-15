@@ -6,6 +6,10 @@ import * as UserController from "../controller/user.controller"
 
 export const pappyRouter = new Router()
 
+pappyRouter.get("/", async (ctx, next) => {
+  ctx.body = "home"
+})
+
 pappyRouter.get("/users", UserController.getUsers)
 pappyRouter.get("/users/:id", UserController.getUser)
 pappyRouter.post("/users", UserController.createUser)
