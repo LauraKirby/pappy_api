@@ -4,7 +4,7 @@ import { AppDataSource } from "../infrastructure/data-source"
 const userRepository = AppDataSource.getRepository(User)
 
 export const updateRecord = async (id: number, updatedFields: any) => {
-  console.log("updateRecord function called from repository")
+  console.log("updateRecord function called from repository with user id: ", id)
   const user = await userRepository.findOneBy({
     id: id
   })
