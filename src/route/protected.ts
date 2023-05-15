@@ -11,7 +11,7 @@ subdomains.get("/users", (ctx, next) => {
 })
 
 subdomains.get("/user", async (ctx, next) => {
-  await UserController.update()
+  const updatedUser = await UserController.update()
 
-  ctx.body = "this will eventually be a put request"
+  ctx.body = updatedUser
 })

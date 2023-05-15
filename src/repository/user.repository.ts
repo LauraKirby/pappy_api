@@ -8,8 +8,10 @@ export const updateRecord = async () => {
   const user = await userRepository.findOneBy({
     id: 1
   })
+
   if (user) {
     user.firstName = "Umed"
     await userRepository.save(user)
+    return user
   }
 }
