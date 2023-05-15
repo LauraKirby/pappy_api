@@ -2,7 +2,7 @@
 // https://github.com/koajs/koa
 import Koa from "koa"
 import koaBody from "koa-body"
-import { AppDataSource } from "./infrastructure/data-source"
+import { AppDataSource } from "./infrastructure/database/data-source"
 import { pappyRouter } from "./route/protected"
 
 AppDataSource.initialize()
