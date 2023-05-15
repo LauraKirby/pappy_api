@@ -20,7 +20,15 @@ pappyRouter.put("/users/:id", async (ctx, next) => {
   console.log("\n\n\n\n\n")
   const userId = Number(ctx.params.id)
   const userData = ctx.request.body
-  const updatedUser = await UserController.update(userId, userData)
 
-  ctx.body = updatedUser
+  ctx.body = await UserController.update(userId, userData)
+})
+
+pappyRouter.post("/users", async (ctx, next) => {
+  console.log("ctx.request.type: ", ctx.request.type)
+  console.log("ctx.request.body: ", ctx.request.body)
+  console.log("\n\n\n\n\n")
+  const userData = ctx.request.body
+
+  ctx.body = await UserController.create(userData)
 })

@@ -15,3 +15,7 @@ export const updateRecord = async (id: number, updatedFields: any) => {
     return user
   }
 }
+
+export const createRecord = async (userData: any) => {
+  return userRepository.create(userData)
+}
