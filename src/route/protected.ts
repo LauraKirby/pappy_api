@@ -9,8 +9,8 @@ pappyRouter.get("/", (ctx, next) => {
   ctx.body = "this will eventually not be a protected route"
 })
 
-pappyRouter.get("/users", (ctx, next) => {
-  ctx.body = "this will eventually be a list of users"
+pappyRouter.get("/users", async (ctx, next) => {
+  ctx.body = await UserController.index()
 })
 
 pappyRouter.put("/users/:id", async (ctx, next) => {

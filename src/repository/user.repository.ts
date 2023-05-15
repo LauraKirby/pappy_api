@@ -19,3 +19,7 @@ export const updateRecord = async (id: number, updatedFields: any) => {
 export const createRecord = async (userData: any) => {
   return userRepository.create(userData)
 }
+
+export const all = async () => {
+  return userRepository.find()
+}
