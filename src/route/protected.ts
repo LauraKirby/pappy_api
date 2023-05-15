@@ -6,6 +6,8 @@ import * as UserController from "../controller/user.controller"
 
 export const pappyRouter = new Router()
 
-pappyRouter.get("/users", UserController.index)
-pappyRouter.post("/users", UserController.create)
-pappyRouter.put("/users/:id", UserController.update)
+pappyRouter.get("/users", UserController.getUsers)
+pappyRouter.get("/users/:id", UserController.getUser)
+pappyRouter.post("/users", UserController.createUser)
+pappyRouter.put("/users/:id", UserController.updateUser)
+pappyRouter.delete("/users/:id", UserController.deleteUser)
