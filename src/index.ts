@@ -1,6 +1,9 @@
+// Koa docs:
+// https://github.com/koajs/koa
 import Koa from "koa"
+import koaBody from "koa-body"
 import { AppDataSource } from "./infrastructure/data-source"
-import { subdomains } from "./route/protected"
+import { pappyRouter } from "./route/protected"
 
 AppDataSource.initialize()
   .then(() => {
@@ -16,13 +19,15 @@ const app = new Koa()
 
 // setup server
 console.log("setting up server")
+app.use(koaBody())
+
 app.use(async (ctx: any, next: any) => {
   await next()
   const rt = ctx.response.get("X-Response-Time")
   console.log(`${ctx.method} ${ctx.url} - ${rt}`)
 })
 
-app.use(subdomains.routes())
+app.use(pappyRouter.routes())
 
 // an example of how to add middleware the request/response cycle
 // x-response-time

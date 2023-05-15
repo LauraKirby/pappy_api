@@ -1,6 +1,6 @@
 import * as UserRepository from "../repository/user.repository"
 
-export const update = async () => {
+export const update = async (userId: number, userData: any) => {
   console.log("update function called from controller")
-  return UserRepository.updateRecord()
+  return UserRepository.updateRecord(userId, userData)
 }
