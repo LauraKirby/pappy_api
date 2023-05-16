@@ -4,7 +4,9 @@ import { AppDataSource } from "../infrastructure/database/data-source"
 const userRepository = AppDataSource.getRepository(User)
 
 export const all = async () => {
-  return userRepository.find()
+  const users = await userRepository.find()
+  console.log("users: ", users)
+  return users
 }
 
 export const createRecord = async (userData: any) => {

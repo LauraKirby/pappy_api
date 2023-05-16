@@ -11,6 +11,11 @@ export const getUsers = async (ctx: Context) => {
 }
 
 export const getUser = async (ctx: Context) => {
+  console.log("ctx: ", ctx)
+  console.log("ctx.params.id: ", ctx.params.id)
+  const user = await UserRepository.getRecord(ctx.params.id)
+  console.log(await UserRepository.all())
+  console.log("user: ", user)
   ctx.body = await UserRepository.getRecord(ctx.params.id)
 }
 

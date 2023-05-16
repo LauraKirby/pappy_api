@@ -38,6 +38,6 @@
     "lint": "eslint src --ext .ts --fix",
     "plint": "prettier --write --ignore-unknown .",
     "watch": "nodemon -L -e ts,json --exec",
-    "test": "jest"
+    "test": "jest --detectOpenHandles"
   }
 }
