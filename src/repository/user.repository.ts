@@ -10,7 +10,7 @@ export const all = async () => {
 }
 
 export const createRecord = async (userData: any) => {
-  return userRepository.create(userData)
+  return userRepository.save(userData)
 }
 
 export const getRecord = async (id: number) => {
