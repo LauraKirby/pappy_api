@@ -38,6 +38,7 @@
     "lint": "eslint src --ext .ts --fix",
     "plint": "prettier --write --ignore-unknown .",
     "watch": "nodemon -L -e ts,json --exec",
-    "test": "jest --detectOpenHandles"
+    "test": "jest --detectOpenHandles",
+    "gen": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:generate -d src/infrastructure/database/data-source.ts"
   }
 }

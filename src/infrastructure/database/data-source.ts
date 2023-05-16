@@ -2,7 +2,12 @@ import * as dotenv from "dotenv"
 import "reflect-metadata"
 import { DataSource } from "typeorm"
 
-dotenv.config()
+// import { User } from '../../entity/user.entity'
+if (process.env.NODE_ENV === "test") {
+  dotenv.config({ path: ".env.test" })
+} else {
+  dotenv.config()
+}
 
 export const AppDataSource = new DataSource({
   type: "postgres",
@@ -11,9 +16,12 @@ export const AppDataSource = new DataSource({
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
+  dropSchema: true,
   synchronize: true,
   logging: false,
   entities: ["src/entity/*.ts"],
   migrations: ["src/infrastructure/database/migration"],
   subscribers: []
 })
+
+// entities: ["../../entity/*.ts"],

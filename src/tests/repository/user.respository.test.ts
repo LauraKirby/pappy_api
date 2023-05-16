@@ -1,33 +1,54 @@
+import { DataSource } from "typeorm"
+import { AppDataSource } from "../../infrastructure/database/data-source"
 import * as UserRepository from "../../repository/user.repository"
 
 describe("UserRepository", () => {
-  // describe("createRecord", () => {
-  //   it("adds user details to the response body", async () => {
-  //     const user = {
-  //       firstName: "Rosie",
-  //       lastName: "Kirby",
-  //       age: 3
-  //     }
+  let myDB: DataSource
+  beforeAll(async () => {
+    console.log("process.env.NODE_ENV:", process.env.NODE_ENV)
+    myDB = await AppDataSource.initialize()
+  })
 
-  //     const createdUser = await UserRepository.createRecord(user)
+  beforeEach(async () => {
+    await myDB.runMigrations()
+  })
 
-  //     expect(createdUser).toEqual(user)
-  //   })
-  // })
+  afterEach(async () => {
+    await myDB.dropDatabase()
+  })
+
+  afterAll(async () => {
+    await myDB.destroy()
+  })
+
+  describe("createRecord", () => {
+    it("creates a user", async () => {
+      const user = {
+        firstName: "Mel",
+        lastName: "Prioa",
+        age: 3
+      }
+
+      const createdUser = await UserRepository.createRecord(user)
+      console.log("createdUser: ", createdUser)
+      expect(createdUser).toEqual(user)
+    })
+  })
 
   describe("getRecord", () => {
-    it("adds user details to the response body", async () => {
+    it("gets all user records", async () => {
       const user = {
         firstName: "Rosie",
         lastName: "Kirby",
         age: 3
       }
 
-      const user2 = await UserRepository.createRecord(user)
-      console.log("user2: ", user2)
-      const createdUser = await UserRepository.all()
+      await UserRepository.createRecord(user)
+      await UserRepository.createRecord(user)
 
-      expect(createdUser.length).toBe(1)
+      const users = await UserRepository.all()
+
+      expect(users).toBe(2)
     })
   })
 })
