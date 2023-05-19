@@ -39,6 +39,7 @@
     "plint": "prettier --write --ignore-unknown .",
     "watch": "nodemon -L -e ts,json --exec",
     "test": "jest --detectOpenHandles",
-    "gen": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:generate -d src/infrastructure/database/data-source.ts"
+    "m:generate": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:generate -d src/infrastructure/database/data-source.ts",
+    "m:run": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:run -d src/infrastructure/database/data-source.ts"
   }
 }
