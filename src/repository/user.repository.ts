@@ -9,6 +9,8 @@ export const all = async () => {
 }
 
 export const createRecord = async (userData: any) => {
+  // const user = userRepository.create(userData)
+
   return userRepository.save(userData)
 }
 
