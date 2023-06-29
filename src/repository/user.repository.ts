@@ -19,15 +19,15 @@ export const getRecord = async (id: number) => {
 }
 
 export const updateRecord = async (id: number, updatedFields: any) => {
-  const user = await userRepository.findOneBy({ id })
+  const userToUpdate = await userRepository.findOneBy({ id })
 
-  if (user) {
-    user.firstName = updatedFields.firstName
-    user.lastName = updatedFields.lastName
-    user.age = updatedFields.age
-    await userRepository.save(updatedFields)
-
-    return user
+  if (userToUpdate) {
+    userToUpdate.firstName = updatedFields.firstName ?? userToUpdate?.firstName
+    userToUpdate.lastName = updatedFields.lastName ?? userToUpdate?.lastName
+    userToUpdate.age = updatedFields.age ?? userToUpdate?.age
+    return userRepository.save(userToUpdate)
+  } else {
+    return null
   }
 }
 

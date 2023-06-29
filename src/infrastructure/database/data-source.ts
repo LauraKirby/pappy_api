@@ -7,8 +7,6 @@ if (process.env.NODE_ENV === "test") {
 } else {
   dotenv.config()
 }
-console.log("process.env.DB_SYNCHRONIZE: ", process.env.DB_SYNCHRONIZE)
-console.log("process.env.DB_DROP_SCHEMA: ", process.env.DB_DROP_SCHEMA)
 
 export const AppDataSource = new DataSource({
   type: "postgres",
